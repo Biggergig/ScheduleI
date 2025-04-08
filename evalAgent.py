@@ -1,4 +1,5 @@
 from agents import *
+from collections import Counter
 from rideTheBus import Game
 from tqdm import tqdm
 
@@ -44,9 +45,14 @@ def sim(agent):
 
 
 if __name__ == "__main__":
-    agent = HandAgent()
+    agent = StatsAgent(r2Threshold=16)
     iters = 100000
+    # iters = 1
     rew_sum = 0
+    counts = Counter()
     for _ in tqdm(range(iters)):
-        rew_sum += sim(agent)
+        res = sim(agent)
+        counts[res] += 1
+        rew_sum += res
     print("EV:", rew_sum / iters)
+    print(counts)
