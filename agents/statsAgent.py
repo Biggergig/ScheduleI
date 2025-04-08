@@ -3,8 +3,9 @@ from rideTheBus import Card
 
 
 class StatsAgent(Agent):
-    def __init__(self, r2Threshold=4):
+    def __init__(self, r2Threshold=4, r3Threshold=4):
         self.r2Threshold = r2Threshold
+        self.r3Threshold = r3Threshold
 
     def round1(self, cards):
         return 0  # always go red
@@ -26,7 +27,7 @@ class StatsAgent(Agent):
             return -1  # forfeit
 
     def round3(self, cards):
-        return -1
+        # return -1
         remaining = [Card(suit, val) for suit in "SHDC" for val in range(1, 14)]
         remaining = [c for c in remaining if c not in cards]
         count = 0
@@ -38,10 +39,12 @@ class StatsAgent(Agent):
             else:
                 count -= 1
         # print(cards, count)
-        if count > 0:
+        if count > self.r3Threshold:
             return 0
-        else:
+        elif count < -self.r3Threshold:
             return 1
+        else:
+            return -1  # forfeit
 
     def round4(self, cards):
         return -1

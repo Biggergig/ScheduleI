@@ -45,7 +45,7 @@ def sim(agent):
 
 
 if __name__ == "__main__":
-    agent = StatsAgent(r2Threshold=16)
+    agent = StatsAgent(r2Threshold=16, r3Threshold=24)
     iters = 100000
     # iters = 1
     rew_sum = 0
