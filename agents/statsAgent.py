@@ -47,7 +47,7 @@ class StatsAgent(Agent):
             return -1  # forfeit
 
     def round4(self, cards):
-        return -1
+        # return -1
         choices = set("SHDC")
         for c in cards:
             choices.discard(c.suit)

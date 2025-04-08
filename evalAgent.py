@@ -55,4 +55,6 @@ if __name__ == "__main__":
         counts[res] += 1
         rew_sum += res
     print("EV:", rew_sum / iters)
-    print(counts)
+    # print(counts)
+    print()
+    game.printStats()
