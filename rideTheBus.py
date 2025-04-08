@@ -23,6 +23,8 @@ class Card:
     val: int
 
     def __repr__(self):
+        return f"{VALUE_TO_ICON.get(self.val, self.val)}{self.suit}"
+    def __str__(self):
         return f"{VALUE_TO_ICON.get(self.val, self.val)}{SUIT_TO_ICON[self.suit]}"
 
     def getColor(self):
@@ -30,6 +32,9 @@ class Card:
 
     def getValue(self):
         return self.val if self.val != 1 else 14
+
+    def __hash__(self):
+        return hash((self.suit, self.val))
 
 
 class Game:
