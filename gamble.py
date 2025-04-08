@@ -99,7 +99,7 @@ if __name__ == "__main__":
     results = []
 
     # Setting max_workers=36 to attempt to run all cases concurrently
-    with concurrent.futures.ProcessPoolExecutor(max_workers=36) as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=49) as executor:
         futures = []
         for i in range(0, 7):
             for j in range(0, 7):
