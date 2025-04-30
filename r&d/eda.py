@@ -29,6 +29,12 @@ df = df.merge(
 
 # print(df["Net Profit"].sum())
 ing_df = (
-    df[["Ingredient"]].assign(Increase=df["Net Profit_x"] - df["Net Profit_y"]).dropna()
+    (
+        df[["Ingredient"]]
+        .assign(Increase=df["Net Profit_x"] - df["Net Profit_y"])
+        .dropna()
+    )
+    .sort_values("Increase", ascending=False)
+    .merge(df[["Ingredient #"]], left_index=True, right_index=True)
 )
 print(ing_df)
